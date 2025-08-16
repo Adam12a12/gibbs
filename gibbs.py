@@ -1,7 +1,10 @@
+#!/usr/bin/env python3
+
 import sys, zipfile, os, re
 
 
 EXTENSIONS = ('.flac', '.mp3', 'wav')
+VERSION = '1.0.0'
 
 def unzip(file, dest):
     with zipfile.ZipFile(file, 'r') as zip_ref:
@@ -56,6 +59,9 @@ args = sys.argv[1:]
 for arg in args:
     if arg == '-h' or arg == '--help':
         print("Usage: gibbs <directory_or_zip_file> <destination_directory>")
+        sys.exit(0)
+    elif arg == '-v' or arg == '--version':
+        print(VERSION)
         sys.exit(0)
 
 if len(args) < 2:
