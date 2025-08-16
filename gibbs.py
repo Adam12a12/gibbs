@@ -63,11 +63,11 @@ if len(args) < 2:
     sys.exit(1)
 
 destination_arg = os.path.abspath(args[1])
-dest_arg = os.path.abspath(args[0])
+dir_arg = os.path.abspath(args[0])
 
-if os.path.isdir(dest_arg):
-    dir_arg = dest_arg
+if os.path.isdir(dir_arg):
     dir_loop(dir_arg)
-elif is_zip_file(dest_arg):
-    file_arg = dest_arg
+elif is_zip_file(dir_arg):
+    file_arg = os.path.basename(dir_arg)
+    dir_arg = os.path.dirname(dir_arg)
     extract_file(file_arg)
